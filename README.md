@@ -1,5 +1,128 @@
 
-# Deep RL Arm Manipulation
+# Robotics Nanodegree #
+
+## Term2 – Project4: DeepRL Arm Manipulation  ##
+
+![](./media/task.gif)
+
+## ROS ##
+
+1. Install ROS:
+
+```
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' && sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116 && sudo apt-get update && sudo apt-get install ros-kinetic-desktop-full && sudo rosdep init && rosdep update && echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc && source ~/.bashrc
+```
+Note: Skip this step if ROS is already installed.
+
+2. Install dependencies: 
+```
+sudo apt-get install ros-kinetic-rtabmap ros-kinetic-rtabmap-ros && sudo apt-get remove ros-kinetic-rtabmap ros-kinetic-rtabmap-ros
+```
+
+## ABSTRACT ##
+
+SLAM or Simultaneous Localization and Mapping is a hot topic in the field of robotics. Real Time Appearance 
+Based Mapping (RTAB-Map) is a SLAM algorithm that can map unknown environments while localization is also taking place. This project was built starting with the previous project (particle filters in ROS). This project was able to successfully map a small apartment like environment. 
+
+## INTRO ##
+
+In the real world, robots have to localize and map their environments because of the unknown nautre of them.
+
+SLAM has:
+
+* a continous part: robot moving poses and measurements
+
+* a discrete part: deciding if the robot has been on that same place (corresponding problem)
+
+The main 2 SLAM algorithms used are: FastSLAM and GraphSLAM.
+
+
+## BACKGROUND ##
+
+GraphSLAM is optimization at the core. It minimizes the error present in the constraint of the graph, applying the maximum likelihood estimation principle (MLE). It will construct a graph, define the contraints, and solve the system. It will use:
+
+* odometer
+
+* RGB-D camera (such as Kinect)
+
+* laser rangefinder
+
+On the back end it will perform loop closure detection, graph optimization, and 2D/3D map generation.
+
+An example of loop closure is shown below (credit UDACITY):
+
+![](./media/loop_closure_detection.png)
+
+RTAB-Map will result in database map files that can be read later for visualization.
+
+
+
+## SCENE AND ROBOT CONFIGURATION ##
+
+The scene is comprised of a small apartment 3D geometry (kitchen_dining.world).
+
+The robot is comprised of:
+
+* odometer
+
+* RGBD camera
+
+For this particular model the laser sensor is simulated using the RGBD camera that converts the depth to laser like readings (credit UDACITY):
+
+![](./media/RTAB_with_simulated_RGBD_laser.png)
+
+
+
+## RESULTS ##
+
+While running ROS, the following process was used to arrive at the final 2D and 3D maps:
+
+1) rosrun tf view_frames
+
+Creates a tree representation of the frames/links and how they physically attach.
+
+![](./media/task1.png)
+
+2) rqt_graph
+
+Visualizes the ROS graph with nodes and how messages are passed.
+
+![](./media/task2.png)
+
+
+## DISCUSSION ##
+
+The SLAM algorithm utilized is very computationally intensive. However, for an enviroment such as the kitchen world, using an Intel i7 processor, there were no delays in the processing of the loop closures and creating the maps.
+
+The point of view of the robot sensors (RGBD  and Lidar) will determine how the maps look like. 
+
+
+
+## FUTURE WORK ##
+
+* This project could be use to create a Robot to assist blind people. The robot would be deployed before hand to a building location where a blind person is gonna be working at and would map the environment for that person. Later that person can use a sensor that will guide him/her to the destination in the building
+
+* Perform Localization
+
+* Utilize visual odometry 
+
+* Obstacle detection
+
+* WiFi Signal Strength Mapping
+
+* Finding objects in 2D and 3D
+
+* Multisession mapping
+
+
+## APPENDIX ##
+
+UDACITY provided files:
+
+
+
+
+# FROM UDACITY GITHUB: Deep RL Arm Manipulation
 
 This project is based on the Nvidia open source project "jetson-reinforcement" developed by [Dustin Franklin](https://github.com/dusty-nv). The goal of the project is to create a DQN agent and define reward functions to teach a robotic arm to carry out two primary objectives:
 
