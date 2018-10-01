@@ -78,8 +78,8 @@ Displacement based control was used for both tasks:
 ```
 #define VELOCITY_CONTROL false
 ```
-<br><br>
 
+<br><br>
 DQN API Settings were left untouched:
 ```
 #define INPUT_CHANNELS 3
@@ -91,8 +91,8 @@ DQN API Settings were left untouched:
 #define EPS_DECAY 200
 ```
 EPS START and END are the minimum probability that the arm will take a random action, and the DECAY is the number of episodes at which these START/END will occur. This is a good parameter to tune if you think the action needed for a positive reward is unlikely to happen. And the DECAY is used so that once the robot has "learned" not very many of these random actions occur.
-<br><br>
 
+<br><br>
 The following hyperparameters were tuned:
 * to obtain a smaller image from the camera that could be processed quickly:
 ```
@@ -116,17 +116,17 @@ The following hyperparameters were tuned:
 #define BATCH_SIZE    512        //8
 ```
 * Long Short Term Memory was enabled and set to 256 for both tasks
-``
+```
 #define USE_LSTM      true      //false
 #define LSTM_SIZE     256       //32
 ```
-<br><br>
 
+<br><br>
 Task#1 reached 90% accuracy at around 90 episodes:
 ![](./media/task1.png)
+
+
 <br><br>
-
-
 Task#2 reached 80% accuracy at around 340 episodes:
 ![](./media/task2.png)
 Task#2 reached 90% accuracy at around 930 episodes:
