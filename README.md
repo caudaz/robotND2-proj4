@@ -99,7 +99,7 @@ The following hyperparameters were tuned:
 #define INPUT_WIDTH   64        // 512
 #define INPUT_HEIGHT  64        // 512
 ```
-* RMSprop seemed to perform better than Adams for both tasks
+* The OPTIMIZER solves the Gradient Descent problem. RMSprop seemed to perform better than Adams for both tasks
 ```
 #define OPTIMIZER     "RMSprop" //"None"
 ```
@@ -136,7 +136,7 @@ Task#2 reached 90% accuracy at around 930 episodes:
 ## DISCUSSION ##
 
 It took a much shorter number of episodes to reach task#1 than to reach task#2. The reason is the amount of contact area for task#1 was higher than for task#2 which was only the gripper.
-
+Results could be improved my a more intensive exploration of the Hyperparameters, specially the gradient descent solver.
 
 <br><br>
 ## FUTURE WORK ##
