@@ -141,21 +141,22 @@ It took a much shorter number of episodes to reach task#1 than to reach task#2. 
 <br><br>
 ## FUTURE WORK ##
 
-* This project could be use to create a Robot to assist blind people. The robot would be deployed before hand to a building location where a blind person is gonna be working at and would map the environment for that person. Later that person can use a sensor that will guide him/her to the destination in the building
+This project could be enhanced to solve the following problems:
 
-* Perform Localization
+* Object Randomization :  will instantiate at different locations along the x-axis. Follow these steps and test your solution:
 
-* Utilize visual odometry 
+In PropPlugin.cpp, redefine the prop poses in PropPlugin::Randomize() to the following:
+```
+pose.pos.x = randf(0.02f, 0.30f);
+pose.pos.y = 0.0f;
+pose.pos.z = 0.0f;
+```
+In ArmPlugin.cpp, replace ResetPropDynamics(); set in the method ArmPlugin::updateJoints() with RandomizeProps();
 
-* Obstacle detection
-
-* WiFi Signal Strength Mapping
-
-* Finding objects in 2D and 3D
-
-* Multisession mapping
-
-
+* Increase Arm's Reach : allow the object’s starting location will be changed, and the arm will be allowed to rotate about its base:
+1. In gazebo-arm.world, modify the tube model’s pose to [0.75 0.75 0 0 0 0]
+2. In ArmPlugin.cpp, set the variable LOCKBASE to false.
+3. In ArmPlugin.cpp, replace RandomizeProps(); set in the method ArmPlugin::updateJoints() with ResetPropDynamics();
 
 
 <br><br><br><br>
