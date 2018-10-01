@@ -36,28 +36,28 @@ Deep Reinforcement Learning is an exciting field in Ai right now. It is used in 
 
 There are two primary objectives to the project -
 
-* Any part of the robot arm should touch the object with atleast an accuracy of 90%.
+TASK#1 - Any part of the robot arm should touch the object with atleast an accuracy of 90%.
 
-* Only the gripper base of the robot arm should touch the object with at least an accuracy of 80%.
+TASK#2 - Only the gripper base of the robot arm should touch the object with at least an accuracy of 80%.
 
 
 The goal of this project was to create an API for ROS that includes a DQN agent following this process:
 
-* Subscribe to cameraNode and collisionNode topics
+1. Subscribe to cameraNode and collisionNode topics
 
-* Create the DQN Agent
+2. Create the DQN Agent
 
-* Use Velocity or Position based control for arm joints
+3. Use Velocity or Position based control for arm joints
 
-* Reward for robot gripper hitting the ground
+4. Reward for robot gripper hitting the ground
 
-* Reward based on the distance to the object
+5. Reward based on the distance to the object
 
-* Reward based on collision between the arm and the object (TASK#1)
+6. Reward based on collision between the arm and the object (TASK#1)
 
-* Tune the hyperparameters
+7. Tune the hyperparameters
 
-* Reward based on collision between the arm’s gripper base and the object (TASK#2)
+8. Reward based on collision between the arm’s gripper base and the object (TASK#2)
 
 
 SLAM has:
