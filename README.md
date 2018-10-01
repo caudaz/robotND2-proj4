@@ -5,18 +5,27 @@
 
 ![](./media/task.gif)
 
+
 ## ROS ##
 
-1. Install ROS:
+This project was run on UDACITY's Workspaces:
 
+1. gazebo/ArmPlugin.cpp was edited and compiled to run:
 ```
-sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' && sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116 && sudo apt-get update && sudo apt-get install ros-kinetic-desktop-full && sudo rosdep init && rosdep update && echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc && source ~/.bashrc
+cd build
+make
 ```
-Note: Skip this step if ROS is already installed.
 
-2. Install dependencies: 
+
+2. ROS/GAZEBO are run: 
 ```
-sudo apt-get install ros-kinetic-rtabmap ros-kinetic-rtabmap-ros && sudo apt-get remove ros-kinetic-rtabmap ros-kinetic-rtabmap-ros
+cd x86_64/bin
+./gazebo-arm.sh
+```
+
+NOTE: If having errors compiling C++ libraries, use:
+```
+sudo apt-get install libignition-math2-dev
 ```
 
 ## ABSTRACT ##
