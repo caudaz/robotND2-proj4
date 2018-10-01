@@ -89,7 +89,7 @@ DQN API Settings were left untouched:
 #define EPS_END   0.05f
 #define EPS_DECAY 200
 ```
-Gamma is used for . EPS is used for ...
+EPS START and END are the minimum probability that the arm will take a random action, and the DECAY is the number of episodes at which these START/END will occur. This is a good parameter to tune if you think the action needed for a positive reward is unlikely to happen. And the DECAY is used so that once the robot has "learned" not very many of these random actions occur.
 <br><br>
 
 The following hyperparameters were tuned:
@@ -126,16 +126,15 @@ Task#1 reached 90% accuracy at around 90 episodes:
 <br><br>
 
 
-Task#2 reached 80% accuracy at around 340 episodes and 90% at around 930 episodes:
+Task#2 reached 80% accuracy at around 340 episodes:
 ![](./media/task2.png)
+Task#2 reached 90% accuracy at around 930 episodes:
 ![](./media/task2_90perc.png)
 
 
 ## DISCUSSION ##
 
-The SLAM algorithm utilized is very computationally intensive. However, for an enviroment such as the kitchen world, using an Intel i7 processor, there were no delays in the processing of the loop closures and creating the maps.
-
-The point of view of the robot sensors (RGBD  and Lidar) will determine how the maps look like. 
+It took a much shorter number of episodes to reach task#1 than to reach task#2. The reason is the amount of contact area for task#1 was higher than for task#2 which was only the gripper.
 
 
 
@@ -156,13 +155,9 @@ The point of view of the robot sensors (RGBD  and Lidar) will determine how the 
 * Multisession mapping
 
 
-## APPENDIX ##
-
-UDACITY provided files:
 
 
-
-
+<br><br><br><br>
 # FROM UDACITY GITHUB: Deep RL Arm Manipulation
 
 This project is based on the Nvidia open source project "jetson-reinforcement" developed by [Dustin Franklin](https://github.com/dusty-nv). The goal of the project is to create a DQN agent and define reward functions to teach a robotic arm to carry out two primary objectives:
