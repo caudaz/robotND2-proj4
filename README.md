@@ -66,7 +66,7 @@ Deep Q-Network(DQN) is used at the core of this project. It grabs an image from 
 
 * possitive rewards are issued if collision of object with arm/grip
 
-* interim reward based on distance to object
+* interim reward based on distance to object (uses a smoothing function)
 
 * negative rewards are issued if touching the ground, reaching a # of attempts
 
