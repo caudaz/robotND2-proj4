@@ -8,7 +8,7 @@
 
 ## ROS ##
 
-This project was run on UDACITY's Workspaces:
+Requirements to run this project locally are: CUDA Video Card and Jetpack installation from NVIDIA. This project was run on UDACITY's Workspaces:
 
 1. gazebo/ArmPlugin.cpp was edited and compiled to run:
 ```
@@ -73,19 +73,62 @@ Deep Q-Network(DQN) is used at the core of this project. It grabs an image from 
 
 ## RESULTS ##
 
-While running ROS, the following process was used to arrive at the final 2D and 3D maps:
+Displacement based control was used for both tasks:
+```
+#define VELOCITY_CONTROL false
+```
+<br><br>
 
-1) rosrun tf view_frames
+DQN API Settings were left untouched:
+```
+#define INPUT_CHANNELS 3
+#define ALLOW_RANDOM true
+#define DEBUG_DQN false
+#define GAMMA     0.9f
+#define EPS_START 0.90f
+#define EPS_END   0.05f
+#define EPS_DECAY 200
+```
+Gamma is used for . EPS is used for ...
+<br><br>
 
-Creates a tree representation of the frames/links and how they physically attach.
+The following hyperparameters were tuned:
+* to obtain a smaller image from the camera that could be processed quickly:
+```
+#define INPUT_WIDTH   64        // 512
+#define INPUT_HEIGHT  64        // 512
+```
+* RMSprop seemed to perform better than Adams for both tasks
+```
+#define OPTIMIZER     "RMSprop" //"None"
+```
+* Learning rate was 0.02 (slow) for task#1 and 0.15 (fast) for task#2 since there is much less contact area
+``
+#define LEARNING_RATE 0.02f     //0.0f
+```
+* Less memory (1000) was used for task#1 than for task#2 (10000) since small area of contact is less likely to occur
+```
+#define REPLAY_MEMORY 1000      //10000
+```
+* Small batch size of 16 was used for task#1 and high of 512 was used for task#2 (since the computer could handle it)
+```
+#define BATCH_SIZE    512        //8
+```
+* Long Short Term Memory was enabled and set to 256 for both tasks
+``
+#define USE_LSTM      true      //false
+#define LSTM_SIZE     256       //32
+```
+<br><br>
 
+Task#1 reached 90% accuracy at around 90 episodes:
 ![](./media/task1.png)
+<br><br>
 
-2) rqt_graph
 
-Visualizes the ROS graph with nodes and how messages are passed.
-
+Task#2 reached 80% accuracy at around 340 episodes and 90% at around 930 episodes:
 ![](./media/task2.png)
+![](./media/task2_90perc.png)
 
 
 ## DISCUSSION ##
