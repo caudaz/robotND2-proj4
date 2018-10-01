@@ -1,5 +1,5 @@
 
-# Robotics Nanodegree #
+# <p align="center">Robotics Nanodegree</p> #
 
 ## Term2 – Project4: DeepRL Arm Manipulation  ##
 
@@ -27,11 +27,12 @@ NOTE: If having errors compiling C++ libraries, use:
 sudo apt-get install libignition-math2-dev
 ```
 
+<br><br>
 ## ABSTRACT ##
 
 Deep Reinforcement Learning is an exciting field in Ai right now. It is used in Robotics, manufacturing, finance, etc. It teaches robots to learn from tasks in 2D and 3D worlds. On this particular project it is used with simulation of a ROS environment that has a camera tha creates a 2D image.  The Q value output of the neural network is a particular action, such as control of the robotic arm. It could be position, velocity, acceleration or a combination (this is selected by the user). The Deep Q-Network (DQN) uses a reward system that is defined by the user: reward if touching the robotic arm, negative reward if touching the ground, etc.
 
-
+<br><br>
 ## INTRO ##
 
 There are two primary objectives to the project -
@@ -59,7 +60,7 @@ The goal of this project was to create an API for ROS that includes a DQN agent 
 
 8. Reward based on collision between the arm’s gripper base and the object (TASK#2)
 
-
+<br><br>
 ## BACKGROUND ##
 
 Deep Q-Network(DQN) is used at the core of this project. It grabs an image from the camera that is fed into the Neural Network. It sses a memory bank of past actions (this is the reinforcement learning part). It uses a reward system to train the robot to touch the arm or the grip against the cylindrical object:
@@ -70,7 +71,7 @@ Deep Q-Network(DQN) is used at the core of this project. It grabs an image from 
 
 * negative rewards are issued if touching the ground, reaching a # of attempts
 
-
+<br><br>
 ## RESULTS ##
 
 Displacement based control was used for both tasks:
@@ -131,13 +132,13 @@ Task#2 reached 80% accuracy at around 340 episodes:
 Task#2 reached 90% accuracy at around 930 episodes:
 ![](./media/task2_90perc.png)
 
-
+<br><br>
 ## DISCUSSION ##
 
 It took a much shorter number of episodes to reach task#1 than to reach task#2. The reason is the amount of contact area for task#1 was higher than for task#2 which was only the gripper.
 
 
-
+<br><br>
 ## FUTURE WORK ##
 
 * This project could be use to create a Robot to assist blind people. The robot would be deployed before hand to a building location where a blind person is gonna be working at and would map the environment for that person. Later that person can use a sensor that will guide him/her to the destination in the building
@@ -158,7 +159,7 @@ It took a much shorter number of episodes to reach task#1 than to reach task#2. 
 
 
 <br><br><br><br>
-# FROM UDACITY GITHUB: Deep RL Arm Manipulation
+# ---- FROM UDACITY GITHUB: Deep RL Arm Manipulation ----
 
 This project is based on the Nvidia open source project "jetson-reinforcement" developed by [Dustin Franklin](https://github.com/dusty-nv). The goal of the project is to create a DQN agent and define reward functions to teach a robotic arm to carry out two primary objectives:
 
