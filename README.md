@@ -104,7 +104,7 @@ The following hyperparameters were tuned:
 #define OPTIMIZER     "RMSprop" //"None"
 ```
 * Learning rate was 0.02 (slow) for task#1 and 0.15 (fast) for task#2 since there is much less contact area
-``
+```
 #define LEARNING_RATE 0.02f     //0.0f
 ```
 * Less memory (1000) was used for task#1 than for task#2 (10000) since small area of contact is less likely to occur
