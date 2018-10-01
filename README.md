@@ -36,9 +36,9 @@ Deep Reinforcement Learning is an exciting field in Ai right now. It is used in 
 
 There are two primary objectives to the project -
 
-* TASK#1 - Any part of the robot arm should touch the object with atleast an accuracy of 90%.
+* TASK#1 - Any part of the robot arm should touch the object with atleast an accuracy of 90%
 
-* TASK#2 - Only the gripper base of the robot arm should touch the object with at least an accuracy of 80%.\
+* TASK#2 - Only the gripper base of the robot arm should touch the object with at least an accuracy of 80%<br>
 
 
 The goal of this project was to create an API for ROS that includes a DQN agent following this process:
