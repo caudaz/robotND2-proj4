@@ -16,10 +16,9 @@ cd build
 make
 ```
 
-
 2. ROS/GAZEBO are run: 
 ```
-cd x86_64/bin
+cd build/x86_64/bin
 ./gazebo-arm.sh
 ```
 
@@ -30,12 +29,36 @@ sudo apt-get install libignition-math2-dev
 
 ## ABSTRACT ##
 
-SLAM or Simultaneous Localization and Mapping is a hot topic in the field of robotics. Real Time Appearance 
-Based Mapping (RTAB-Map) is a SLAM algorithm that can map unknown environments while localization is also taking place. This project was built starting with the previous project (particle filters in ROS). This project was able to successfully map a small apartment like environment. 
+Deep Reinforcement Learning is an exciting field in Ai right now. It is used in Robotics, manufacturing, finance, etc. It teaches robots to learn from tasks in 2D and 3D worlds. On this particular project it is used with simulation of a ROS environment that has a camera tha creates a 2D image.  The Q value output of the neural network is a particular action, such as control of the robotic arm. It could be position, velocity, acceleration or a combination (this is selected by the user). The Deep Q-Network (DQN) uses a reward system that is defined by the user: reward if touching the robotic arm, negative reward if touching the ground, etc.
+
 
 ## INTRO ##
 
-In the real world, robots have to localize and map their environments because of the unknown nautre of them.
+There are two primary objectives to the project -
+
+* Any part of the robot arm should touch the object with atleast an accuracy of 90%.
+
+* Only the gripper base of the robot arm should touch the object with at least an accuracy of 80%.
+
+
+The goal of this project was to create an API for ROS that includes a DQN agent following this process:
+
+* Subscribe to cameraNode and collisionNode topics
+
+* Create the DQN Agent
+
+* Use Velocity or Position based control for arm joints
+
+* Reward for robot gripper hitting the ground
+
+* Reward based on the distance to the object
+
+* Reward based on collision between the arm and the object (TASK#1)
+
+* Tune the hyperparameters
+
+* Reward based on collision between the arm’s gripper base and the object (TASK#2)
+
 
 SLAM has:
 
