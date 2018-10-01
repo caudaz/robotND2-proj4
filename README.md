@@ -1,7 +1,7 @@
 
 # <p align="center">Robotics Nanodegree</p> #
 
-## Term2 – Project4: DeepRL Arm Manipulation  ##
+## <p align="center">Term2 – Project4: DeepRL Arm Manipulation</p>  ##
 
 ![](./media/task.gif)
 
