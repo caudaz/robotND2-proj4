@@ -60,49 +60,15 @@ The goal of this project was to create an API for ROS that includes a DQN agent 
 8. Reward based on collision between the arm’s gripper base and the object (TASK#2)
 
 
-SLAM has:
-
-* a continous part: robot moving poses and measurements
-
-* a discrete part: deciding if the robot has been on that same place (corresponding problem)
-
-The main 2 SLAM algorithms used are: FastSLAM and GraphSLAM.
-
-
 ## BACKGROUND ##
 
-GraphSLAM is optimization at the core. It minimizes the error present in the constraint of the graph, applying the maximum likelihood estimation principle (MLE). It will construct a graph, define the contraints, and solve the system. It will use:
+Deep Q-Network(DQN) is used at the core of this project. It grabs an image from the camera that is fed into the Neural Network. It sses a memory bank of past actions (this is the reinforcement learning part). It uses a reward system to train the robot to touch the arm or the grip against the cylindrical object:
 
-* odometer
+* possitive rewards are issued if collision of object with arm/grip
 
-* RGB-D camera (such as Kinect)
+* interim reward based on distance to object
 
-* laser rangefinder
-
-On the back end it will perform loop closure detection, graph optimization, and 2D/3D map generation.
-
-An example of loop closure is shown below (credit UDACITY):
-
-![](./media/loop_closure_detection.png)
-
-RTAB-Map will result in database map files that can be read later for visualization.
-
-
-
-## SCENE AND ROBOT CONFIGURATION ##
-
-The scene is comprised of a small apartment 3D geometry (kitchen_dining.world).
-
-The robot is comprised of:
-
-* odometer
-
-* RGBD camera
-
-For this particular model the laser sensor is simulated using the RGBD camera that converts the depth to laser like readings (credit UDACITY):
-
-![](./media/RTAB_with_simulated_RGBD_laser.png)
-
+* negative rewards are issued if touching the ground, reaching a # of attempts
 
 
 ## RESULTS ##
