@@ -1,5 +1,5 @@
 
-# <p align="center">Robotics Nanodegree</p> #
+# <p align="center">ROBOTICS NANODEGREE</p> #
 
 ## <p align="center">Term2 – Project4: DeepRL Arm Manipulation</p>  ##
 
